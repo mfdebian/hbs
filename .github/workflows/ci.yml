@@ -32,30 +32,30 @@ jobs:
           node-version: "6.17"
           npm-i: mocha@6.2.2
           npm-rm: nyc
-          npm-config-shrinkwrap: true
+          disable-npm-shrinkwrap: true
 
         - name: Node.js 8.x
           node-version: "8.17"
           npm-i: mocha@7.2.0 nyc@13.3.0
-          npm-config-shrinkwrap: true
+          disable-npm-shrinkwrap: true
 
         - name: Node.js 10.x
           node-version: "10.24"
           npm-i: mocha@8.3.2 nyc@14.1.1
-          npm-config-shrinkwrap: true
+          disable-npm-shrinkwrap: true
 
         - name: Node.js 12.x
           node-version: "12.22"
           npm-i: nyc@14.1.1
-          npm-config-shrinkwrap: true
+          disable-npm-shrinkwrap: true
 
         - name: Node.js 14.x
           node-version: "14.18"
-          npm-config-shrinkwrap: true
+          disable-npm-shrinkwrap: true
 
         - name: Node.js 16.x
           node-version: "16.13"
-          npm-config-shrinkwrap: true
+          disable-npm-shrinkwrap: true
 
         - name: Node.js 18.x
           node-version: "18.20"
@@ -88,7 +88,7 @@ jobs:
 
     - name: Configure npm
       run: npm config set shrinkwrap false
-      if: matrix.npm-config-shrinkwrap
+      if: matrix.disable-npm-shrinkwrap
 
     - name: Remove npm module(s) ${{ matrix.npm-rm }}
       run: npm rm --silent --save-dev ${{ matrix.npm-rm }}
